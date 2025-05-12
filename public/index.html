@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invoice Generator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Invoice Generator</h1>
+    
+    <!-- Invoice Form -->
+    <section class="form-section">
+      <h2>Create Invoice</h2>
+      <form id="invoice-form">
+        <label for="invoiceNumber">Invoice Number:</label>
+        <input type="text" id="invoiceNumber" required>
+        
+        <label for="date">Date:</label>
+        <input type="date" id="date" required>
+        
+        <label for="customerName">Customer Name:</label>
+        <input type="text" id="customerName" required>
+        
+        <label for="address">Address:</label>
+        <textarea id="address" required></textarea>
+        
+        <label for="productDetails">Product Details:</label>
+        <textarea id="productDetails" required></textarea>
+        
+        <label for="amount">Amount (₹):</label>
+        <input type="number" id="amount" step="0.01" required>
+        
+        <button type="submit">Generate Invoice</button>
+      </form>
+    </section>
+    
+    <!-- Invoice Preview -->
+    <section class="preview-section" id="invoice-preview" style="display: none;">
+      <h2>Invoice Preview</h2>
+      <div id="invoice-content">
+        <p><strong>Invoice Number:</strong> <span id="preview-invoiceNumber"></span></p>
+        <p><strong>Date:</strong> <span id="preview-date"></span></p>
+        <p><strong>Customer Name:</strong> <span id="preview-customerName"></span></p>
+        <p><strong>Address:</strong> <span id="preview-address"></span></p>
+        <p><strong>Product Details:</strong> <span id="preview-productDetails"></span></p>
+        <p><strong>Amount:</strong> ₹<span id="preview-amount"></span></p>
+      </div>
+      <button id="download-pdf">Download PDF</button>
+    </section>
+    
+    <!-- Previous Invoices -->
+    <section class="previous-invoices">
+      <h2>Previous Invoices</h2>
+      <input type="text" id="search-invoice" placeholder="Enter Invoice Number">
+      <button id="search-button">Search</button>
+      <table id="invoices-table">
+        <thead>
+          <tr>
+            <th>Invoice Number</th>
+            <th>Date</th>
+            <th>Customer Name</th>
+            <th>Amount</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="invoices-body"></tbody>
+      </table>
+    </section>
+  </div>
+  
+  <!-- Include jsPDF library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
