@@ -4,7 +4,7 @@ const { jsPDF } = window.jspdf;
 // Handle form submission
 document.getElementById('invoice-form').addEventListener('submit', async (e) => {
   e.preventDefault();
-  
+
   const invoiceData = {
     invoiceNumber: document.getElementById('invoiceNumber').value,
     date: document.getElementById('date').value,
@@ -25,7 +25,7 @@ document.getElementById('invoice-form').addEventListener('submit', async (e) => 
 
   // Save to backend
   try {
-    const response = await fetch('http://localhost:5000/api/invoices', {
+    const response = await fetch('https://invoice-generator-b03v.onrender.com/api/invoices', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(invoiceData),
@@ -55,7 +55,7 @@ document.getElementById('download-pdf').addEventListener('click', () => {
 // Fetch and display previous invoices
 async function fetchInvoices() {
   try {
-    const response = await fetch('http://localhost:5000/api/invoices');
+    const response = await fetch('https://invoice-generator-b03v.onrender.com/api/invoices');
     const invoices = await response.json();
     const tbody = document.getElementById('invoices-body');
     tbody.innerHTML = '';
@@ -79,7 +79,7 @@ async function fetchInvoices() {
 // View invoice details in a popup
 async function viewInvoice(invoiceNumber) {
   try {
-    const response = await fetch(`http://localhost:5000/api/invoices/${invoiceNumber}`);
+    const response = await fetch(`https://invoice-generator-b03v.onrender.com/api/invoices/${invoiceNumber}`);
     const invoice = await response.json();
     if (!invoice) throw new Error('Invoice not found');
     alert(`
